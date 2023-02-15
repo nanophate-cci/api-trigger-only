@@ -1,0 +1,15 @@
+version: 2.1
+
+build:
+  docker:
+    - image: cimg/base:stable
+  steps:
+    - checkout
+    - run: echo "aaa"
+    
+workflows:
+  build-test:
+	  when:
+      equal: [ api, << pipeline.trigger_source >> ]
+    jobs:
+      - build

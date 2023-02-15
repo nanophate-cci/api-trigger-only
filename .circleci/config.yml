@@ -7,9 +7,10 @@ jobs:
       - checkout
       - run: echo "aaaa"
 
-  workflow:
+workflows:
+  build-image:
     when:
       equal: [ api, << pipeline.trigger_source >> ]
     jobs:
-      - build
-  
+    - build
+  version: 2

@@ -1,5 +1,8 @@
 version: 2.1
 jobs:
+  parameters:
+    manual:
+      type: string
   build:
     docker:
       - image: cimg/base:stable
@@ -11,6 +14,7 @@ workflows:
   build-image:
     when:
       equal: [ api, << pipeline.trigger_source >> ]
+      equal: [ true, << pipeline.parameters.manual >> ]
     jobs:
       - build
   version: 2

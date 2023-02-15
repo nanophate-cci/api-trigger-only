@@ -7,8 +7,9 @@ jobs:
       - checkout
       - run: echo "aaaa"
 
-workflows:
-  jobs:
+  workflow:
     when:
       equal: [ api, << pipeline.trigger_source >> ]
-    - build
+    jobs:
+      - build
+  

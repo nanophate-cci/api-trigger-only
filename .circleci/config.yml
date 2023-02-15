@@ -3,6 +3,7 @@ jobs:
   parameters:
     manual:
       type: string
+      default: ""
   build:
     docker:
       - image: cimg/base:stable

@@ -9,7 +9,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: echo "aaaa"
+      - run: echo "aaakka"
 
 workflows:
   build-image:

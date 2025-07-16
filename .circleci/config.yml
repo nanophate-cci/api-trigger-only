@@ -1,9 +1,11 @@
 version: 2.1
+
+parameters:
+  manual:
+    type: boolean
+    default: false
+
 jobs:
-  parameters:
-    run-manual:
-      type: boolean
-      default: false
   build:
     docker:
       - image: cimg/base:stable
@@ -13,9 +15,9 @@ jobs:
 
 workflows:
   build-image:
-    when:
-      equal: [ api, << pipeline.trigger_source >> ]
-    when: << pipeline.parameters.manual >>
+    when: 
+      or:
+        - << pipeline.parameters.manual >>
+        - equal:  [ api, << pipeline.trigger_source >> ]
     jobs:
       - build
-  version: 2
